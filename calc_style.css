@@ -1,0 +1,32 @@
+
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#calc-body{
+    width: 200px;
+    display: flex;
+    align-items: center;
+}
+
+
+/*number and math button formatting */
+#numbers-row, #top-row, #numbers, #screen {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+}
+
+#screen{
+    background-color: black;
+    color: white;
+}
+
+/*equal sign formatting*/
+#equal{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
