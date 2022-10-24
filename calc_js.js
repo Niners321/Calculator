@@ -1,20 +1,48 @@
+//setting up Global variables
+
+const buttons = document.querySelectorAll('button');
+const display = document.querySelector('#display');
+
+let numberStored = "";
+let operatorStored= "";
+
+
 //add function
-const add = function(a, b) {
+function add(a, b) {
     return a + b;
 };
 
 //subtract function
-const subtract = function(a, b) {
+function subtract(a, b) {
     return a - b;
 };
 
 //multiplication function
-const multiply = function(a, b) {
+function multiply(a, b) {
     return a * b;
 };
 
 //division function
-const divide = function(a, b) {
+function divide(a, b) {
     return a / b;
 };
 
+//operate function
+const operate = function(a, operator, b) {
+    if(operator === "+") {
+        return add(a, b);
+    } else if(operator === "-") {
+        return subtract(a, b);
+    } else if(operator === "x") {
+        return multiply(a, b);
+    } else if(operator === "÷") {
+        return divide(a, b);
+    } else {
+        return null;
+    };
+
+};
+
+function addToDisplay(num) {
+    let displayNum = display.textContent;
+}

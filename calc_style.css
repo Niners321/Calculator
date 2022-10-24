@@ -15,10 +15,13 @@ html{
     height: 50px;
     font-size: 35px;
     background-color: black;
+    border: none;
     color: white;
     text-align: right;
     padding-right: 5px;
+    padding-top: 7px;
 }
+
 
 /* button formatting*/
 button{
