@@ -46,7 +46,7 @@ button:hover {
 }
 
 /* operator formatting*/
-#add, #subtract, #multiply, #divide{
+#op-button{
     color:rgb(0, 0, 117);
 }
 
