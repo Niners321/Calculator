@@ -44,10 +44,13 @@ button:hover {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 5px;
 }
-
 /* operator formatting*/
 #op-button{
     color:rgb(0, 0, 117);
+}
+
+.is-pressed{
+    background-color: blueviolet;
 }
 
 /* clear button formatting*/
