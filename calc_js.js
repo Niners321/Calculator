@@ -11,10 +11,10 @@ keys.addEventListener('click', e => {
         const action = key.dataset.action;
         const keyContent = key.textContent;
         let displayedNum = display.textContent;
-        let storedNum;
+        let storedNum = calculator.dataset.storedNum;
         let secondNum;
         let previousKeyType = calculator.dataset.previousKeyType;
-        let operator
+        let operator = calculator.dataset.operator;
         //adding numbers to display
         if(!action) {
             if (displayedNum === '0' || previousKeyType === 'operator'){
@@ -35,7 +35,9 @@ keys.addEventListener('click', e => {
             action === 'multiply' ||
             action === 'divide') {
                 //assigning storedNum
-                storedNum = displayedNum;
+                storedNum = display.textContent;
+                calculator.dataset.storedNum = storedNum;
+
                 console.log(storedNum);
                 key.classList.add('is-pressed');
                 //find the operator
@@ -48,14 +50,20 @@ keys.addEventListener('click', e => {
                 } else if (action === 'divide') {
                     operator = '/';
                  };
-                 calculator.dataset.previousKeyType = 'operator';
+            calculator.dataset.previousKeyType = 'operator';
+            calculator.dataset.operator = operator;
 
         } else if (action == 'clear') {
             display.textContent = '0';
             calculator.dataset.previousKeyType = 'clear';
         } else if (action == 'equal') {
-            console.log('Equal Key');
+            secondNum = display.textContent;
+            console.log(secondNum);
+            console.log(storedNum);
+            console.log(operator);
+            display.textContent = operate(storedNum, operator, secondNum);
             console.log(operate(storedNum, operator, secondNum));
+            console.log('Equal Key');
             calculator.dataset.previousKeyType = 'equal';
         }
 
@@ -65,7 +73,6 @@ keys.addEventListener('click', e => {
     };
 
 }
-
 )
 
 //add function
@@ -81,7 +88,7 @@ function subtract(a, b) {
 
 //multiplication function
 function multiply(a, b) {
-    return parseFloat(a) * parseFloat(b)
+    return parseFloat(a) * parseFloat(b);
 };
 
 //division function
@@ -90,12 +97,12 @@ function divide(a, b) {
 };
 
 //operate function
-const operate = function(a, operator, b) {
+function operate(a, operator, b) {
     if(operator === "+") {
         return add(a, b);
     } else if(operator === "-") {
         return subtract(a, b);
-    } else if(operator === "x") {
+    } else if(operator === "*") {
         return multiply(a, b);
     } else if(operator === "/") {
         return divide(a, b);
@@ -104,14 +111,3 @@ const operate = function(a, operator, b) {
     };
 
 };
-
-
-
-
-
-
-
-
-
-
-
