@@ -27,6 +27,8 @@ keys.addEventListener('click', e => {
         else if (action == 'decimal') {
             if(!displayedNum.includes('.')) {
                 display.textContent = displayedNum + '.';
+            } else if(previousKeyType === 'operator') {
+                display.textContent = '0.';
             };  
             calculator.dataset.previousKeyType = 'decimal';
         } else if (
@@ -37,9 +39,8 @@ keys.addEventListener('click', e => {
                 //assigning storedNum
                 storedNum = display.textContent;
                 calculator.dataset.storedNum = storedNum;
-
-                console.log(storedNum);
                 key.classList.add('is-pressed');
+                console.log(storedNum);
                 //find the operator
                 if (action === 'add') {
                     operator = '+';
@@ -55,12 +56,15 @@ keys.addEventListener('click', e => {
 
         } else if (action == 'clear') {
             display.textContent = '0';
+            storedNum = '';
+            operator = '';
+            secondNum = '';
             calculator.dataset.previousKeyType = 'clear';
         } else if (action == 'equal') {
             secondNum = display.textContent;
-            console.log(secondNum);
             console.log(storedNum);
             console.log(operator);
+            console.log(secondNum);
             display.textContent = operate(storedNum, operator, secondNum);
             console.log(operate(storedNum, operator, secondNum));
             console.log('Equal Key');
