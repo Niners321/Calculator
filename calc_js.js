@@ -15,11 +15,11 @@ keys.addEventListener('click', e => {
         let secondNum;
         let previousKeyType = calculator.dataset.previousKeyType;
         let operator = calculator.dataset.operator;
-        //adding numbers to display
+        //adding numbers to display and limiting the digits
         if(!action) {
-            if (displayedNum === '0' || previousKeyType === 'operator'){
+            if (displayedNum === '0' || previousKeyType === 'operator' && displayedNum.length < 10){
                 display.textContent = keyContent;
-            } else {
+            } else if (displayedNum.length < 10) {
                 display.textContent = displayedNum + keyContent;
             }
             calculator.dataset.previousKeyType = 'number';
@@ -56,9 +56,9 @@ keys.addEventListener('click', e => {
 
         } else if (action == 'clear') {
             display.textContent = '0';
-            storedNum = '';
-            operator = '';
-            secondNum = '';
+            calculator.dataset.storedNum = '';
+            calculator.dataset.operator = '';
+            calculator.dataset.secondNum = '';
             calculator.dataset.previousKeyType = 'clear';
         } else if (action == 'equal') {
             secondNum = display.textContent;
