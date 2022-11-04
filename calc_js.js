@@ -55,6 +55,7 @@ keys.addEventListener('click', e => {
             calculator.dataset.operator = operator;
 
         } else if (action == 'clear') {
+            //clearing the calculator
             display.textContent = '0';
             calculator.dataset.storedNum = '';
             calculator.dataset.operator = '';
@@ -62,10 +63,14 @@ keys.addEventListener('click', e => {
             calculator.dataset.previousKeyType = 'clear';
         } else if (action == 'equal') {
             secondNum = display.textContent;
-            console.log(storedNum);
-            console.log(operator);
-            console.log(secondNum);
-            display.textContent = operate(storedNum, operator, secondNum);
+            //show solution and ensure length fits on display
+            if (operate(storedNum, operator, secondNum) > 999999999) {
+                display.textContent = (operate(storedNum, operator, secondNum)).toExponential(6);
+            } else if (operate(storedNum, operator, secondNum) - Math.floor(operate(storedNum, operator, secondNum)) !== 0) {
+                display.textContent = operate(storedNum, operator, secondNum).toFixed(2);
+            } else {
+                display.textContent = operate(storedNum, operator, secondNum);
+            };
             console.log(operate(storedNum, operator, secondNum));
             console.log('Equal Key');
             calculator.dataset.previousKeyType = 'equal';
@@ -81,6 +86,7 @@ keys.addEventListener('click', e => {
 
 //add function
 function add(a, b) {
+
     return parseFloat(a) + parseFloat(b);
 
 };
